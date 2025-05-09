@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GerryDanata Training Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Enhanced Navbar */
+        .navbar {
+            background: #1a73e8;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-name {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: #1557b0;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 40px 5%;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 15px;
+            padding: 60px 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .welcome-heading {
+            color: #1a73e8;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .next-button {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(26,115,232,0.3);
+        }
+
+        .next-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(26,115,232,0.4);
+        }
+
+        .arrow-down {
+            width: 20px;
+            height: 20px;
+            border-bottom: 3px solid white;
+            border-right: 3px solid white;
+            transform: rotate(45deg);
+            margin-top: -3px;
+        }
+
+        /* Details Section */
+        .details-section {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 50px 30px;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .person-details h2 {
+            color: #1a73e8;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+        }
+
+        .detail-item {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 3%;
+            }
+            
+            .brand-name {
+                font-size: 1.4rem;
+            }
+            
+            .nav-items {
+                gap: 15px;
+            }
+            
+            .nav-item {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Navbar -->
+    <nav class="navbar">
+        <div class="brand-section">
+            <span class="brand-name"> GERRY's DANATA</span>
+        </div>
+        <div class="nav-items">
+            <a href="#" class="nav-item">HOME</a>
+            <!-- <a href="#return" class="nav-item"> RETURN</a> -->
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="welcome-section">
+            <h1 class="welcome-heading">WELCOME TO TRAINING DEPARTMENT</h1>
+            <button class="next-button" onclick="showDetails()">
+                NEXT 
+                <div class="arrow-down"></div>
+            </button>
+        </section>
+
+        <section class="details-section">
+            <div class="person-details">
+                <h2>TEAM MEMBER DETAILS</h2>
+                <p class="detail-item"><strong>Name:</strong> John Doe</p>
+                <p class="detail-item"><strong>Project:</strong> AI Training Module</p>
+                <p class="detail-item"><strong>Role:</strong> Lead Trainer</p>
+                <p class="detail-item"><strong>Duration:</strong> 6 Months</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function showDetails() {
+            document.querySelector('.welcome-section').style.display = 'none';
+            const detailsSection = document.querySelector('.details-section');
+            detailsSection.style.display = 'block';
+            setTimeout(() => {
+                detailsSection.style.opacity = '1';
+                detailsSection.style.transform = 'translateY(0)';
+            }, 50);
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = '#0d47a1';
+                navbar.style.padding = '0.8rem 5%';
+            } else {
+                navbar.style.background = '#1a73e8';
+                navbar.style.padding = '1rem 5%';
+            }
+        });
+
+        // Navigation functionality
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                if(this.textContent === 'HOME') {
+                    document.querySelector('.welcome-section').style.display = 'block';
+                    document.querySelector('.details-section').style.display = 'none';
+                }
+                // Add more navigation logic as needed
+            });
+        });
+    </script>
+</body>
+</html>
